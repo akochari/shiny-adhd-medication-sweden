@@ -24,7 +24,7 @@ RUN Rscript -e 'setwd("/srv/shiny-server/");renv::restore();'
 RUN rm -rf /srv/shiny-server/*
 COPY /app/ /srv/shiny-server/
 
-# Other settings
+# Other settings 
 USER shiny
 EXPOSE 3838
 
