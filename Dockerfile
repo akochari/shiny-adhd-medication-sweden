@@ -1,5 +1,5 @@
 # Base image
-FROM rocker/shiny:4.4.2
+FROM rocker/shiny:4.4.1
 
 # General updates
 RUN apt-get update && \
@@ -29,8 +29,7 @@ RUN if id shiny &>/dev/null && [ "$(id -u shiny)" -ne 999 ]; then \
         userdel -r shiny; \
         id -u 999 &>/dev/null && userdel -r "$(id -un 999)"; \
     fi; \
-    groupadd -g 999 shiny || true; \
-    useradd -u 999 -g 999 -m -s /bin/bash shiny; \
+    useradd -u 999 -m -s /bin/bash shiny; \
     chown -R shiny:shiny /srv/shiny-server/ /var/lib/shiny-server/ /var/log/shiny-server/
 
 # Other settings 
